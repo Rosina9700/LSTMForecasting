@@ -8,7 +8,7 @@ Hourly weather data has been taken from the NASA MERRA2 dataset and downsampled 
 
 It is assumed that no forecast available for external weather variables and the LSTM RNN architecture is designed for multi-step (48 steps) prediction.
 
-The performance is evaluated using mean MAPE over a full day
+The performance is evaluated using mean absolute percentage error over a full day
 
 ## Dependancies
 - keras
