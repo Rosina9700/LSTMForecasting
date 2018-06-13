@@ -1,11 +1,12 @@
 # Forecasting with Keras LSTM RNN
-In this study, I investigate the use of LSTM RNNs to forecast a day ahead of 30minute energy demand (48 time steps).
+Built a forecaster class that uses a LSTM RNN to forecast a day ahead of 30 minute energy demand (48 time steps).
 External features include weather variable of temperature, irradiance and rainfall.
 
 Energy demand is from a C&I facility based in Accra, Ghana.
+
 Hourly weather data has been taken from the NASA MERRA2 dataset and downsampled from 1hour intervals to 30minute intervals.
 
-It is assumed that no forecast available for external weather variables and the LSTM RNN architecture is designed for multi-step (96 steps) prediction.
+It is assumed that no forecast available for external weather variables and the LSTM RNN architecture is designed for multi-step (48 steps) prediction.
 
 The performance is evaluated using mean MAPE over a full day
 
