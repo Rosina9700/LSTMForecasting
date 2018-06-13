@@ -27,7 +27,7 @@ class DataPreparation(object):
         df = pd.read_csv(self.path)
         df = df[['t','energy_all','T','liq_precip','irr_glo']]
         df['t'] = pd.to_datetime(df['t'])
-        df['energy_all'] = df['energy_all']/1000.
+        df['energy_all'] = df['energy_all']/1000. #to get energy in kWh rather than Wh
         df.set_index('t', inplace=True, verify_integrity=True)
         return df
 
@@ -83,6 +83,7 @@ class DataPreparation(object):
         # Splitting into two feature of x and y length if projected onto a 2d-axis
 
         df['x_y_hour'] = np.sin(2*np.pi*df.index.hour/24.) + np.cos(2*np.pi*df.index.hour/24.)
+        df['day_of_year'] = df.index.dayofyear
         df['dow'] = df.index.dayofweek
         df = pd.get_dummies(df, columns=['dow'])
         return df

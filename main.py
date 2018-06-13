@@ -84,7 +84,7 @@ if __name__ =='__main__':
     X_train, X_test, y_train, y_test = dp.train_test_split(df_X.values, df_y.values, 0.1)
 
     print 'LSTM model training'
-    units = np.arange(30,131,20)
+    units = np.arange(30,111,20)
     sequences = np.array([i * window for i in [1,3,5]])
     dropout = [0.0,0.2]
     activations = ['relu','tanh']
@@ -100,8 +100,8 @@ if __name__ =='__main__':
 
     print 'Evaluating LSTM model'
     fe = ForecastEvaluation(lm)
-    in_sample = fe.evaluate_in_sample(96*14)
-    out_of_sample = fe.evaluate_out_of_sample(X_test, y_test, 96*14)
+    in_sample = fe.evaluate_in_sample(window*7)
+    out_of_sample = fe.evaluate_out_of_sample(X_test, y_test, window*7)
     y_preds = lm.predict(X_test)
     plot_predictions(y_test,y_preds)
     plot_evaluation(in_sample[1],'mape')
